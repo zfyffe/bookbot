@@ -25,14 +25,24 @@ def main():
         #print(alphabet_dict)
 
         #creates a string for alphabet order
-        alpa_store = {}
-        number_store = {}
-        number_max = 0
-
+        alpha_store = ""
+        number_list = []
+        letter_max = ""
+        del_alpha_dict = alphabet_dict
+        
         for key in alphabet_dict:
-            if alphabet_dict[key] > number_max:
-                number_max = alphabet_dict[key]
-        print(number_max)
+            number_list.append(alphabet_dict[key])
+        number_list.sort(reverse=True)
+        print(number_list)
+
+        for key in number_list:
+            for key2 in alphabet_dict:
+                if key == alphabet_dict[key2]:
+                    alpha_store += key2
+            print(key)
+        
+        print(alpha_store)
+            
 
 
 
@@ -41,7 +51,7 @@ def main():
         print(f"--- Begin report of {book_path} ---")
         print(f"{word_count} words found in the document")
         print()
-        for key in alphabet_dict:
+        for key in alpha_store:
             print(f"The '{key}' character was found {alphabet_dict[key]} times")
         print("--- End report ---")
 
